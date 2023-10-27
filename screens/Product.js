@@ -17,7 +17,7 @@ const Product = () => {
             <TouchableOpacity className="flex-1" onPress={()=>{navigation.goBack()}}>
               <Ionicons name="chevron-back-outline" size={30} color="white" />
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=>navigation.navigate("cart")}>
               <Feather name="shopping-bag" size={30} color="white" />
             </TouchableOpacity>
           </View>

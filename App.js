@@ -3,9 +3,12 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useState } from "react";
 import {
+  Cart,
   Createaccount,
+  Delivery,
   HomeScreen,
   Onboarding,
+  OrderConfirmation,
   Product,
   VerifyScreen,
   Welcome,
@@ -26,6 +29,7 @@ function App() {
         setFirstlaunched(false);
       }
     });
+    console.log(firstlaunched)
   }, []);
   return (
     <NavigationContainer>
@@ -65,6 +69,21 @@ function App() {
           name="product"
           options={{ headerShown: false }}
           component={Product}
+        />
+        <Stack.Screen
+          name="cart"
+          options={{ headerShown: false }}
+          component={Cart}
+        />
+        <Stack.Screen
+          name="delivery"
+          options={{ headerShown: false }}
+          component={Delivery}
+        />
+        <Stack.Screen
+        name="orderconfirmation"
+        options={{ headerShown:false }}
+        component={OrderConfirmation}
         />
       </Stack.Navigator>
     </NavigationContainer>
