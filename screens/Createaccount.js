@@ -1,10 +1,14 @@
 import { Text, TouchableOpacity, View, TextInput } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
 
 const Createaccount = () => {
-    const navigation = useNavigation()
+  const navigation = useNavigation();
+  const [fullname,setFullname] = useState("")
+  const [email,setEmail] = useState("")
+  const [password,setPassword] = useState("")
+  const [phone,setPhone] = useState("")
   return (
     <View className="p-2">
       <View className="mt-10 ">
@@ -20,25 +24,31 @@ const Createaccount = () => {
         <View className="m-2">
           <Text className="font-bold">Full Name</Text>
           <View className="w-full p-2 border-2 border-gray-400 rounded">
-            <TextInput placeholder="Enter full name" />
+            <TextInput
+              placeholder="Enter full name"
+              value={fullname}
+              onChangeText={(text) => setFullname(text)}
+            />
           </View>
         </View>
         <View className="m-2">
           <Text className="font-bold">Email Address</Text>
           <View className="w-full p-2 border-2 border-gray-400 rounded">
-            <TextInput placeholder="Enter email Address" />
+            <TextInput placeholder="Enter email Address" 
+            onChangeText={(text)=>setEmail(text)}
+            />
           </View>
         </View>
         <View className="m-2">
           <Text className="font-bold">Phone Number</Text>
           <View className="w-full p-2 border-2 border-gray-400 rounded">
-            <TextInput placeholder="Enter phone number" />
+            <TextInput placeholder="Enter phone number" onChangeText={(text)=>setPhone(text)}/>
           </View>
         </View>
         <View className="m-2">
           <Text className="font-bold">Password</Text>
           <View className="w-full p-2 border-2 border-gray-400 rounded">
-            <TextInput placeholder="Enter password" />
+            <TextInput placeholder="Enter password" onChangeText={(text)=>setPassword(text)}/>
           </View>
         </View>
       </View>
@@ -51,7 +61,6 @@ const Createaccount = () => {
         </Text>
       </TouchableOpacity>
       <Text className="text-center text-slate-400 mt-5">or Sign up with</Text>
-      <View></View>
       <View className="flex-row justify-center">
         <Text className="text-slate-400">Already have an account?</Text>
         <TouchableOpacity>
@@ -63,5 +72,3 @@ const Createaccount = () => {
 };
 
 export default Createaccount;
-
-

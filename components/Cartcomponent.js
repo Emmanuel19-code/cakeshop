@@ -1,7 +1,7 @@
 import { Image, Text, View } from "react-native";
 import React from "react";
 
-const Cartcomponent = () => {
+const Cartcomponent = ({price,size,productName,image}) => {
   return (
     <View className="bg-white shadow w-full h-auto p-2 rounded flex-row m-1">
       <Image
@@ -9,7 +9,7 @@ const Cartcomponent = () => {
         className="w-36 h-40 rounded"
       />
       <View className="m-2">
-        <Text>Vanilla Combo</Text>
+        <Text>{productName}</Text>
         <Text className="font-medium">Best Price $15</Text>
         <Text className="font-medium">Send extra gift with cake</Text>
         <Text className="font-medium">Rose flower $15</Text>
@@ -17,11 +17,11 @@ const Cartcomponent = () => {
         <View>
           <View className="flex-row items-center">
             <Text className="flex-1 font-medium">Price</Text>
-            <Text className="text-orange-400">$15</Text>
+            <Text className="text-orange-400">{price}</Text>
           </View>
           <View className="flex-row items-center">
             <Text className="flex-1 font-medium">Size</Text>
-            <Text className="text-orange-400">small</Text>
+            <Text className="text-orange-400">{size}</Text>
           </View>
           <View className="flex-row items-center">
             <Text className="flex-1 font-bold text-lg">Subtotal</Text>

@@ -3,18 +3,15 @@ import React from 'react'
 import { AntDesign } from "@expo/vector-icons";
 import Cartcomponent from '../components/Cartcomponent';
 import { useNavigation } from '@react-navigation/native';
+import HeaderOne from '../components/HeaderOne';
+import ConfirmButton from '../components/ConfirmButton';
 
 const Cart = () => {
     const navigation = useNavigation()
   return (
     <View className="h-screen">
       <ScrollView showsVerticalScrollIndicator={false} className="">
-        <View className="flex-row items-center bg-teal-600 p-2">
-          <TouchableOpacity className="" onPress={() => navigation.goBack()}>
-            <AntDesign name="left" size={24} color="white" />
-          </TouchableOpacity>
-          <Text className="text-white text-xl">Cart</Text>
-        </View>
+       <HeaderOne headertitle={"Cart"}/>
         <Cartcomponent />
         <Cartcomponent />
         <Cartcomponent />
@@ -24,14 +21,10 @@ const Cart = () => {
             <Text className="text-white text-center">Clear Cart</Text>
           </TouchableOpacity>
         </View>
-        <View className="items-center mt-10">
-          <TouchableOpacity
-            className="bg-teal-600 rounded w-32 p-2"
-            onPress={() => navigation.navigate("delivery")}
-          >
-            <Text className="text-white text-center">Checkout</Text>
-          </TouchableOpacity>
-        </View>
+        <ConfirmButton
+        routename={"delivery"}
+        name={"Checkout"}
+        />
       </ScrollView>
     </View>
   );

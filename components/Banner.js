@@ -1,7 +1,8 @@
-import {Text,ScrollView,View, TouchableOpacity, Image} from 'react-native'
-import React from 'react'
+//import { Image } from "expo-image";
+import { Text, ScrollView, View, TouchableOpacity, Image } from "react-native";
+import React from "react";
 
-const Banner = () => {
+const Banner = (images, percentage) => {
   return (
     <ScrollView
       horizontal
@@ -52,7 +53,6 @@ const Banner = () => {
       </View>
     </ScrollView>
   );
-}
+};
 
-export default Banner
-
+export default Banner;

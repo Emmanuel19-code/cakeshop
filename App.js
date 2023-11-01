@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import {
   Cart,
   Createaccount,
+  CurrentLocation,
   Delivery,
   HomeScreen,
   Onboarding,
@@ -15,6 +16,7 @@ import {
 } from "./screens";
 import { StatusBar } from "react-native";
 import TabBottom from "./navigators/TabBottomNavigation";
+
 
 const Stack = createNativeStackNavigator();
 
@@ -81,9 +83,19 @@ function App() {
           component={Delivery}
         />
         <Stack.Screen
-        name="orderconfirmation"
-        options={{ headerShown:false }}
-        component={OrderConfirmation}
+          name="orderconfirmation"
+          options={{ headerShown: false }}
+          component={OrderConfirmation}
+        />
+        <Stack.Screen
+          name="onlinepayment"
+          options={{ headerShown: false }}
+          component={OrderConfirmation}
+        />
+        <Stack.Screen
+          name="currentlocation"
+          options={{ headerShown: false }}
+          component={CurrentLocation}
         />
       </Stack.Navigator>
     </NavigationContainer>

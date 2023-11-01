@@ -2,7 +2,7 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { EvilIcons } from "@expo/vector-icons";
 
-const FavouritesContainer = ({image,rating,price,name}) => {
+const FavouritesContainer = ({image,rating,price,productName,percentOff}) => {
   return (
     <View className="p-2">
       <View className="p-3 bg-white shadow rounded flex-row items-center justify-between">
@@ -11,18 +11,20 @@ const FavouritesContainer = ({image,rating,price,name}) => {
             source={require("../assets/Image5.jpg")}
             className="w-40 h-40"
           />
-          <Text>Vanila Combo</Text>
+          <Text>{productName}</Text>
           <View className="flex-row items-center">
-            {Array(5)
+            {Array(rating)
               .fill()
               .map((_, i) => (
                 <Text>&#x2B50;</Text>
               ))}
           </View>
-          <View className="absolute bg-orange-300 left-1 top-1 px-1">
-            <Text className="text-xs text-white">42%</Text>
-          </View>
-          <Text className="text-orange-500 font-medium">$24</Text>
+          {percentOff && (
+            <View className="absolute bg-orange-300 left-1 top-1 px-1">
+              <Text className="text-xs text-white">{percentOff}</Text>
+            </View>
+          )}
+          <Text className="text-orange-500 font-medium">{price}</Text>
         </View>
         <View className="items-center">
           <TouchableOpacity>

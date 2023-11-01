@@ -104,21 +104,6 @@ const Product = () => {
               <Text className="flex-1 m-1">Rose Flavor</Text>
               <Text>+$3</Text>
             </View>
-            <View className="flex-row items-center m-1">
-              <Checkbox />
-              <Text className="flex-1 m-1">Rose Flavor</Text>
-              <Text>+$3</Text>
-            </View>
-            <View className="flex-row items-center m-1">
-              <Checkbox />
-              <Text className="flex-1 m-1">Rose Flavor</Text>
-              <Text>+$3</Text>
-            </View>
-            <View className="flex-row items-center m-1">
-              <Checkbox />
-              <Text className="flex-1 m-1">Rose Flavor</Text>
-              <Text>+$3</Text>
-            </View>
             <View className="flex-row items-center justify-around">
               <Text className="font-bold text-xl ">Total</Text>
               <Text className="font-bold text-center text-lg">$15</Text>

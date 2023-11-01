@@ -1,8 +1,11 @@
 import { Text, TouchableOpacity, View, TextInput } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { AntDesign } from "@expo/vector-icons";
+import Checkbox from "expo-checkbox";
 
 const Welcome = () => {
+  const [email,setEmail] = useState("")
+  const [password,setPassword] = useState("")
   return (
     <View className="p-2">
       <View className="mt-10 ">
@@ -18,20 +21,29 @@ const Welcome = () => {
         <View className="m-2">
           <Text>Email Address</Text>
           <View className="w-full p-2 border-2 border-gray-400 rounded">
-            <TextInput placeholder="Enter email Address" />
+            <TextInput
+              placeholder="Enter email Address"
+              onChangeText={(text) => setEmail(text)}
+            />
           </View>
         </View>
         <View className="m-2">
           <Text>Password</Text>
           <View className="w-full p-2 border-2 border-gray-400 rounded">
-            <TextInput placeholder="Email Address" />
+            <TextInput
+              placeholder="Enter password"
+              onChangeText={(text) => setPassword(text)}
+            />
           </View>
         </View>
         <View className="flex-row items-center m-2">
-          <View className="flex-1">
+          <View className="flex-1 flex-row items-center">
+            <Checkbox />
             <Text>Remeber me </Text>
           </View>
-          <Text className="text-teal-400">Forgot Password</Text>
+          <TouchableOpacity>
+            <Text className="text-teal-400">Forgot Password</Text>
+          </TouchableOpacity>
         </View>
       </View>
       <TouchableOpacity className="bg-teal-300 w-80 m-2 p-2">

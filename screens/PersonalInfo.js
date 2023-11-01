@@ -4,8 +4,12 @@ import { Ionicons } from "@expo/vector-icons";
 import { EvilIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
+import { useNavigation } from '@react-navigation/native';
+
+
 
 const PersonalInfo = () => {
+  const navigation = useNavigation()
   return (
     <View>
       <View className="bg-teal-700 h-screen">
@@ -35,7 +39,7 @@ const PersonalInfo = () => {
           <View className="flex-row items-center m-2 bg-white shadow border p-3 rounded-lg border-gray-200">
             <Ionicons name="location-outline" size={30} color="#0f766e" />
             <Text className="text-xl  flex-1 ml-2 ">Address</Text>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=>navigation.navigate("currentlocation")}>
               <AntDesign name="right" size={24} color="black" />
             </TouchableOpacity>
           </View>
