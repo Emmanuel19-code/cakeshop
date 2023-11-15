@@ -1,39 +1,45 @@
 import { Text, View, TouchableOpacity, Image } from "react-native";
-import React from "react";
-import { Ionicons } from "@expo/vector-icons";
+import React, { useEffect, useState } from "react";
 import { AntDesign } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
-import { Feather } from "@expo/vector-icons";
 import {Checkbox} from "expo-checkbox"
+import HeaderThree from "../components/HeaderThree";
+import Sizeselect from "../components/Sizeselect";
 import { useNavigation } from "@react-navigation/native";
+import { useRoute } from "@react-navigation/native";
 
 const Product = () => {
-    const navigation = useNavigation()
+  const [quantity,setQuantity] = useState(0)
+  const [addtofavorite,setAddtofavorite] = useState(false)
+  const [total,setTotal] = useState(0)
+  const navigation = useNavigation()
+  const route = useRoute()
+  const { productid } = route.params;
+  const decreasequantity= ()=>{
+    if(quantity==0){
+      setQuantity(0)
+    }else{
+      setQuantity(quantity-1)
+    }
+  }
+  const favoritesadd=()=>{
+    if(!addtofavorite){
+       setAddtofavorite(true)
+    }else{
+      setAddtofavorite(false)
+    }
+  }
+  useEffect(()=>{
+   setTotal(quantity*10)
+  },[quantity])
+
   return (
     <View>
       <View className="bg-teal-700 h-screen">
         <View className="p-2">
-          <View className="flex-row items-center">
-            <TouchableOpacity className="flex-1" onPress={()=>{navigation.goBack()}}>
-              <Ionicons name="chevron-back-outline" size={30} color="white" />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={()=>navigation.navigate("cart")}>
-              <Feather name="shopping-bag" size={30} color="white" />
-            </TouchableOpacity>
-          </View>
+          <HeaderThree />
           <View className="mt-14 flex-row items-center justify-between">
-            <View className="">
-              <Text className="text-gray-200 text-lg">Cake Size</Text>
-              <TouchableOpacity className="bg-gray-100 rounded-full transparent p-1 w-20 h-10 m-1 justify-center items-center">
-                <Text>Small</Text>
-              </TouchableOpacity>
-              <TouchableOpacity className="bg-gray-100 rounded-full transparent p-1 w-20 h-10 m-1 justify-center items-center">
-                <Text>Medium</Text>
-              </TouchableOpacity>
-              <TouchableOpacity className="bg-gray-100 rounded-full transparent p-1 w-20 h-10 m-1 justify-center items-center">
-                <Text>Large</Text>
-              </TouchableOpacity>
-            </View>
+            <Sizeselect />
             <View>
               <Image
                 source={require("../assets/Image4.jpg")}
@@ -64,12 +70,14 @@ const Product = () => {
               </View>
               <View className="flex-row items-center">
                 <Text>Add to favorite</Text>
-                <TouchableOpacity>
-                  <MaterialIcons
-                    name="favorite-border"
-                    size={30}
-                    color="black"
-                  />
+                <TouchableOpacity
+                  onPress={favoritesadd}
+                >
+                    <MaterialIcons
+                      name="favorite-border"
+                      size={30}
+                      color={addtofavorite?"black":"red"}
+                    />
                 </TouchableOpacity>
               </View>
             </View>
@@ -84,7 +92,7 @@ const Product = () => {
             <View className="flex-row items-center">
               <Text className="flex-1">Reviews</Text>
               <TouchableOpacity>
-                <AntDesign name="right" size={24} color="black" />
+                <AntDesign name="right" size={24} color="black" onPress={()=>navigation.navigate("reviews")}/>
               </TouchableOpacity>
             </View>
             <View className="flex-row items-center">
@@ -106,15 +114,23 @@ const Product = () => {
             </View>
             <View className="flex-row items-center justify-around">
               <Text className="font-bold text-xl ">Total</Text>
-              <Text className="font-bold text-center text-lg">$15</Text>
+              <Text className="font-bold text-center text-lg">
+                {`$ ${total}`}
+              </Text>
             </View>
           </View>
           <View className="flex-row items-center mt-4 justify-evenly">
-            <TouchableOpacity className="w-10 h-10 rounded-full bg-gray-200 items-center justify-center">
+            <TouchableOpacity
+              className="w-10 h-10 rounded-full bg-gray-200 items-center justify-center"
+              onPress={decreasequantity}
+            >
               <AntDesign name="minus" size={24} color="black" />
             </TouchableOpacity>
-            <Text>1</Text>
-            <TouchableOpacity className="w-10 h-10 rounded-full bg-black items-center justify-center">
+            <Text className="text-lg">{quantity}</Text>
+            <TouchableOpacity
+              className="w-10 h-10 rounded-full bg-black items-center justify-center"
+              onPress={() => setQuantity(quantity + 1)}
+            >
               <AntDesign name="plus" size={24} color="white" />
             </TouchableOpacity>
             <View>

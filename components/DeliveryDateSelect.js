@@ -1,18 +1,35 @@
-import { Text, View } from 'react-native'
-import React from 'react'
+import { Text, TouchableOpacity, View } from "react-native";
+import React, { useState } from "react";
 
-const DeliveryDateSelect = (fromtime,toTime) => {
+const DeliveryDateSelect = ({
+  id,
+  fromtime,
+  toTime,
+  pricing,
+  selectedItemId,
+  onItemSelect,
+}) => {
+  const handleSelect = () => {
+    onItemSelect(id);
+  };
   return (
-    <View className="m-1">
-      <View className="flex-row items-center border-b border-gray-200 p-2">
-             <Text className="flex-1"> 8 : 00 AM ~ 9 : 00 AM</Text>
-         <View>
-            <Text>Free</Text>
-         </View>
+    <TouchableOpacity className="m-1" onPress={handleSelect}>
+      <View
+        className={
+          selectedItemId === id
+            ? "flex-row items-center border-b bg-gray-200 border-gray-200 p-2"
+            : "flex-row items-center border-b border-gray-200 p-2"
+        }
+      >
+        <Text className="flex-1">
+          {fromtime} ~ {toTime}
+        </Text>
+        <View>
+          <Text>{pricing}</Text>
+        </View>
       </View>
-    </View>
-  )
-}
+    </TouchableOpacity>
+  );
+};
 
-export default DeliveryDateSelect
-
+export default DeliveryDateSelect;

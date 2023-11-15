@@ -2,12 +2,12 @@ import { Image, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 
-const Cakes = ({ rating, price, productName, image }) => {
+const Cakes = ({productid, rating, price, productName, image }) => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
       className="bg-white shadow-sm w-40 h-36 rounded m-1 mb-3 p-1"
-      onPress={() => navigation.navigate("product")}
+      onPress={() => navigation.navigate("product",{productid:productid})}
     >
       <Image source={require("../assets/Image6.jpg")} className="w-full h-20" />
       <Text className="text-xs font-bold">{productName}</Text>

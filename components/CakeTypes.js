@@ -1,15 +1,15 @@
-import { Text, View,Image } from 'react-native'
+import { Text, View,Image,TouchableOpacity } from 'react-native'
 import React from 'react'
 
-const CakeTypes = ({productName,image}) => {
+const CakeTypes = ({caketypeId,productName,imagePath}) => {
   return (
     <View>
-      <View className="m-1 bg-blue-200 w-14 h-14 items-center justify-center rounded-full">
+      <TouchableOpacity className="m-1 bg-blue-200 w-14 h-14 items-center justify-center rounded-full">
         <Image
           source={require("../assets/Image2.jpg")}
           className="w-12 h-12 object-contain rounded-full"
         />
-      </View>
+      </TouchableOpacity>
       <Text>{productName}</Text>
     </View>
   );

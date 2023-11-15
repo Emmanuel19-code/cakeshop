@@ -43,7 +43,7 @@ const OrderConfirmation = (deliverlocation,name) => {
             <Text className="font-medium">Discount</Text>
             <Text className="text-orange-400">$12</Text>
           </View>
-          <View className="flex-row justify-center">
+          <View className="flex-row justify-evenly">
             <Text className="font-medium">Delivery fee</Text>
             <Text className="text-orange-400 mr-3">$12</Text>
           </View>

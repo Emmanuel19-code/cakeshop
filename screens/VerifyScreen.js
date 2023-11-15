@@ -5,7 +5,7 @@ import { AntDesign } from "@expo/vector-icons";
 
 const VerifyScreen = () => {
   const navigation = useNavigation();
-  const [seconds, setSeconds] = useState(60); // 5 minutes in seconds
+  const [seconds, setSeconds] = useState(180); // 5 minutes in seconds
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -15,11 +15,11 @@ const VerifyScreen = () => {
         clearInterval(timer);
       }
     }, 1000);
-    if (seconds === 0) {
-      setTimeout(() => {
-        handleResendOTP();
-      }, 1000);
-    }
+    //if (seconds === 0) {
+    //  setTimeout(() => {
+    //    handleResendOTP();
+    //  }, 1000);
+    //}
     // Cleanup the timer when the component unmounts
     return () => clearInterval(timer);
   }, [seconds]);
@@ -28,11 +28,9 @@ const VerifyScreen = () => {
   const remainingSeconds = seconds % 60;
 
   const handleResendOTP = () => {
-    // You can implement your OTP resend logic here.
-    // This can include making an API call to request a new OTP.
-    // After requesting a new OTP, you can reset the timer to 5 minutes.
+    //call api here
     alert("Resedning otp token");
-    setSeconds(60); // Reset the timer to 5 minutes
+    setSeconds(180); // Reset the timer to 5 minutes
   };
   return (
     <View className="p-2 flex-1">
@@ -75,6 +73,7 @@ const VerifyScreen = () => {
         <TouchableOpacity
           className="w-64 p-2 rounded bg-teal-500"
           onPress={() => navigation.navigate("mainpage")}
+          
         >
           <Text className="text-white text-xl text-center">Next</Text>
         </TouchableOpacity>

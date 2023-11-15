@@ -5,12 +5,18 @@ import { useEffect, useState } from "react";
 import {
   Cart,
   Createaccount,
+  CreditCard,
   CurrentLocation,
   Delivery,
+  Favourites,
   HomeScreen,
   Onboarding,
   OrderConfirmation,
+  PendingOrderDetails,
   Product,
+  Reviews,
+  Search,
+  TrackOrder,
   VerifyScreen,
   Welcome,
 } from "./screens";
@@ -90,12 +96,43 @@ function App() {
         <Stack.Screen
           name="onlinepayment"
           options={{ headerShown: false }}
-          component={OrderConfirmation}
+          component={CreditCard}
         />
         <Stack.Screen
           name="currentlocation"
           options={{ headerShown: false }}
           component={CurrentLocation}
+        />
+        <Stack.Screen
+          name="reviews"
+          options={{ headerShown: false }}
+          component={Reviews}
+        />
+
+        <Stack.Screen
+          name="favorites"
+          options={{ headerShown: false }}
+          component={Favourites}
+        />
+        <Stack.Screen
+          name="pendingoderdetails"
+          options={{ headerShown: false }}
+          component={PendingOrderDetails}
+        />
+        <Stack.Screen
+          name="completeoderdetails"
+          options={{ headerShown: false }}
+          component={""}
+        />
+        <Stack.Screen
+          name="trackorder"
+          options={{ headerShown: false }}
+          component={TrackOrder}
+        />
+        <Stack.Screen
+          name="search"
+          options={{ headerShown: false }}
+          component={Search}
         />
       </Stack.Navigator>
     </NavigationContainer>
