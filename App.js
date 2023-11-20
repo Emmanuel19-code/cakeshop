@@ -13,6 +13,7 @@ import {
   Onboarding,
   OrderConfirmation,
   PendingOrderDetails,
+  ProcessOrder,
   Product,
   Reviews,
   Search,
@@ -133,6 +134,11 @@ function App() {
           name="search"
           options={{ headerShown: false }}
           component={Search}
+        />
+        <Stack.Screen
+        name="processorder"
+        options={{ headerShown:false }}
+        component={ProcessOrder}
         />
       </Stack.Navigator>
     </NavigationContainer>

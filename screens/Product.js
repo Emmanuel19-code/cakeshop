@@ -1,4 +1,4 @@
-import { Text, View, TouchableOpacity, Image } from "react-native";
+import { Text, View, TouchableOpacity, Image, FlatList,ScrollView } from "react-native";
 import React, { useEffect, useState } from "react";
 import { AntDesign } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -7,6 +7,8 @@ import HeaderThree from "../components/HeaderThree";
 import Sizeselect from "../components/Sizeselect";
 import { useNavigation } from "@react-navigation/native";
 import { useRoute } from "@react-navigation/native";
+import AddOns from "../components/AddOns";
+import { flavordata } from "../data/flavors";
 
 const Product = () => {
   const [quantity,setQuantity] = useState(0)
@@ -32,9 +34,9 @@ const Product = () => {
   useEffect(()=>{
    setTotal(quantity*10)
   },[quantity])
-
+ 
   return (
-    <View>
+    <View className="flex-1">
       <View className="bg-teal-700 h-screen">
         <View className="p-2">
           <HeaderThree />
@@ -48,7 +50,7 @@ const Product = () => {
             </View>
           </View>
         </View>
-        <View className="bg-white shadow h-full rounded-t-xl w-full p-2 border-gray-300 mt-2">
+        <ScrollView className="bg-white shadow h-full rounded-t-xl w-full p-2 border-gray-300 mt-2">
           <View className="">
             <View>
               <View className="flex-row items-center justify-between">
@@ -70,32 +72,35 @@ const Product = () => {
               </View>
               <View className="flex-row items-center">
                 <Text>Add to favorite</Text>
-                <TouchableOpacity
-                  onPress={favoritesadd}
-                >
-                    <MaterialIcons
-                      name="favorite-border"
-                      size={30}
-                      color={addtofavorite?"black":"red"}
-                    />
+                <TouchableOpacity onPress={favoritesadd}>
+                  <MaterialIcons
+                    name="favorite-border"
+                    size={30}
+                    color={addtofavorite ? "black" : "red"}
+                  />
                 </TouchableOpacity>
               </View>
             </View>
           </View>
           <View>
-            <View className="flex-row items-center">
+            <View className="flex-row items-center m-2">
               <Text className="flex-1">Description</Text>
               <TouchableOpacity>
                 <AntDesign name="right" size={24} color="black" />
               </TouchableOpacity>
             </View>
-            <View className="flex-row items-center">
+            <View className="flex-row items-center m-2">
               <Text className="flex-1">Reviews</Text>
               <TouchableOpacity>
-                <AntDesign name="right" size={24} color="black" onPress={()=>navigation.navigate("reviews")}/>
+                <AntDesign
+                  name="right"
+                  size={24}
+                  color="black"
+                  onPress={() => navigation.navigate("reviews")}
+                />
               </TouchableOpacity>
             </View>
-            <View className="flex-row items-center">
+            <View className="flex-row items-center m-2">
               <Text className="flex-1">Delivery</Text>
               <TouchableOpacity>
                 <AntDesign name="right" size={24} color="black" />
@@ -107,11 +112,15 @@ const Product = () => {
               <Text className="flex-1">Add ons</Text>
               <Text>optional</Text>
             </View>
-            <View className="flex-row items-center m-1">
-              <Checkbox />
-              <Text className="flex-1 m-1">Rose Flavor</Text>
-              <Text>+$3</Text>
-            </View>
+            <FlatList
+              data={flavordata}
+              keyExtractor={(item) => {
+                item.id;
+              }}
+              renderItem={({ item }) => (
+                <AddOns flavorname={item.name} price={item.price} />
+              )}
+            />
             <View className="flex-row items-center justify-around">
               <Text className="font-bold text-xl ">Total</Text>
               <Text className="font-bold text-center text-lg">
@@ -119,7 +128,7 @@ const Product = () => {
               </Text>
             </View>
           </View>
-          <View className="flex-row items-center mt-4 justify-evenly">
+          <View className="flex-row items-center mt-1 mb-7 justify-evenly">
             <TouchableOpacity
               className="w-10 h-10 rounded-full bg-gray-200 items-center justify-center"
               onPress={decreasequantity}
@@ -139,7 +148,7 @@ const Product = () => {
               </TouchableOpacity>
             </View>
           </View>
-        </View>
+        </ScrollView>
       </View>
     </View>
   );

@@ -135,7 +135,7 @@ const Delivery = (deliverylocation) => {
       <ConfirmButton
         routename={"orderconfirmation"}
         name={"Confirm Order"}
-        disabledstatus={false}
+        disabledstatus={selectedItemId ===null || selecteddate === null?true:false}
       />
     </View>
   );

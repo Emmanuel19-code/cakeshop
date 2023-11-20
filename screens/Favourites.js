@@ -1,5 +1,5 @@
 import {
-  ScrollView,
+  ScrollView, View,
 } from "react-native";
 import React from "react";
 import FavouritesContainer from "../components/FavouritesContainer";
@@ -8,11 +8,13 @@ import HeaderTwo from "../components/HeaderTwo";
 
 const Favourites = () => {
   return (
-    <ScrollView>
-      <HeaderTwo name={"Favourites"}/>
-      <FavouritesContainer />
-      <FavouritesContainer />
-    </ScrollView>
+    <View>
+      <HeaderTwo name={"Favourites"} />
+      <ScrollView>
+        <FavouritesContainer />
+        <FavouritesContainer />
+      </ScrollView>
+    </View>
   );
 };
 

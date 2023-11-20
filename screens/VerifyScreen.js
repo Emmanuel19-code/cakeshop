@@ -1,36 +1,49 @@
 import { Text, TouchableOpacity, View, TextInput } from "react-native";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
 
-const VerifyScreen = () => {
+const VerifyScreen = ({email,phonenumber}) => {
   const navigation = useNavigation();
-  const [seconds, setSeconds] = useState(180); // 5 minutes in seconds
+  const [timer, setTimer] = useState({ seconds: 180, disable: true });
+  const { seconds, disable } = timer;
 
   useEffect(() => {
-    const timer = setInterval(() => {
+    const interval = setInterval(() => {
       if (seconds > 0) {
-        setSeconds(seconds - 1);
+        setTimer((prevState) => ({
+          ...prevState,
+          seconds: prevState.seconds - 1,
+        }));
       } else {
-        clearInterval(timer);
+        clearInterval(interval);
       }
     }, 1000);
-    //if (seconds === 0) {
-    //  setTimeout(() => {
-    //    handleResendOTP();
-    //  }, 1000);
-    //}
-    // Cleanup the timer when the component unmounts
-    return () => clearInterval(timer);
+    return () => clearInterval(interval);
   }, [seconds]);
 
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = seconds % 60;
 
+  const otpInputRefs = Array(4)
+    .fill()
+    .map(() => useRef(null));
+
+  useEffect(() => {
+    otpInputRefs[0]?.current?.focus();
+  }, []);
+
+  const handleInputChange = (text, index) => {
+    if (text.length === 1 && index < otpInputRefs.length - 1) {
+      otpInputRefs[index + 1]?.current?.focus();
+    }
+    setTimer((prevState) => ({ ...prevState, disable: text.length <= 0 }));
+  };
+
   const handleResendOTP = () => {
-    //call api here
-    alert("Resedning otp token");
-    setSeconds(180); // Reset the timer to 5 minutes
+    // Call API here
+    alert("Resending OTP token");
+    setTimer({ seconds: 180, disable: true });
   };
   return (
     <View className="p-2 flex-1">
@@ -46,18 +59,19 @@ const VerifyScreen = () => {
       </View>
       <View className="mt-4 flex-1">
         <View className="m-2 flex-row items-center justify-center">
-          <View className="w-10 h-10 p-2 m-1 border-2 border-gray-400 rounded">
-            <TextInput keyboardType="numeric" />
-          </View>
-          <View className="w-10 h-10 p-2 m-1 border-2 border-gray-400 rounded">
-            <TextInput keyboardType="numeric" />
-          </View>
-          <View className="w-10 h-10 p-2 m-1 border-2 border-gray-400 rounded">
-            <TextInput keyboardType="numeric"/>
-          </View>
-          <View className="w-10 h-10 p-2 m-1 border-2 border-gray-400 rounded">
-            <TextInput keyboardType="numeric"/>
-          </View>
+          {otpInputRefs.map((ref, index) => (
+            <View className="w-10 h-10 p-2 m-1 border-2 border-gray-400 rounded">
+              <TextInput
+                key={index}
+                keyboardType="numeric"
+                className="text-center"
+                maxLength={1}
+                ref={ref}
+                onChangeText={(text) => handleInputChange(text, index)}
+                autoFocus={index === 0}
+              />
+            </View>
+          ))}
         </View>
         <View className="flex-row items-center justify-center">
           <Text className="text-center text-slate-400">Resends in </Text>
@@ -71,9 +85,9 @@ const VerifyScreen = () => {
 
       <View className="justify-center items-center mb-2">
         <TouchableOpacity
-          className="w-64 p-2 rounded bg-teal-500"
+          className={disable?"w-64 p-2 rounded bg-gray-400":"w-64 p-2 rounded bg-teal-500"}
           onPress={() => navigation.navigate("mainpage")}
-          
+          disabled={disable}
         >
           <Text className="text-white text-xl text-center">Next</Text>
         </TouchableOpacity>
@@ -83,3 +97,31 @@ const VerifyScreen = () => {
 };
 
 export default VerifyScreen;
+
+{
+  /*
+<View className="w-10 h-10 p-2 m-1 border-2 border-gray-400 rounded">
+            <TextInput
+              keyboardType="numeric"
+              className="text-center"
+             
+            />
+          </View>
+          <View className="w-10 h-10 p-2 m-1 border-2 border-gray-400 rounded">
+            <TextInput
+              keyboardType="numeric"
+              className="text-center"
+              
+            />
+          </View>
+          <View className="w-10 h-10 p-2 m-1 border-2 border-gray-400 rounded">
+            <TextInput
+              keyboardType="numeric"
+              className="text-center"
+             
+            />
+          </View>
+
+
+*/
+}

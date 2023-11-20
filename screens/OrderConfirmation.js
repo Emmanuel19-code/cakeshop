@@ -1,23 +1,21 @@
 import { Text, ScrollView, View, TouchableOpacity, Image } from "react-native";
 import React from "react";
 import { AntDesign } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
 import { FontAwesome } from "@expo/vector-icons";
-import DeliveryDateSelect from "../components/DeliveryDateSelect";
 import OrderProduct from "../components/OrderProduct";
 import HeaderOne from "../components/HeaderOne";
 import ConfirmButton from "../components/ConfirmButton";
 
 
 
-const OrderConfirmation = (deliverlocation,name) => {
+const OrderConfirmation = ({deliverlocation,name}) => {
   return (
     <View className="bg-white h-screen">
       <HeaderOne headertitle={"Order Confirmation"}/>
-      <View className="bg-white shadow-2xl border border-gray-200 w-full p-2 mt-2 flex-row items-center">
+      <View className="bg-white shadow-2xl border border-gray-200 w-full p-1 mt-2 flex-row items-center">
         <Image
           source={require("../assets/Image10.jpg")}
-          className="w-20 h-20 rounded-full"
+          className="w-10 h-10 rounded-full"
         />
         <View className="ml-1">
           <Text className="font-bold text-lg">Esther</Text>

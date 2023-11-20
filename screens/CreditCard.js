@@ -38,7 +38,7 @@ const CreditCard = () => {
           selectedId={selectedId}
         />
       </View>
-      <ConfirmButton name={"Confirm"} />
+      <ConfirmButton name={"Confirm"} routename={"processorder"}/>
     </View>
   );
 }

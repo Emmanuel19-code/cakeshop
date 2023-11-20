@@ -1,13 +1,30 @@
 import { Text, View,TouchableOpacity, Image } from 'react-native'
-import React from 'react'
+import React,{useState} from 'react'
 import { Ionicons } from "@expo/vector-icons";
 import { EvilIcons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import PersonalsubContainer from '../components/PersonalsubContainer';
-
-
+import { Entypo } from "@expo/vector-icons";
+import * as ImagePicker from "expo-image-picker"
+//import { BottomSheetModal, BottomSheetScrollView } from "@gorhom/bottom-sheet";
 
 const PersonalInfo = () => {
+    const [image, setImage] = useState(null);
+
+    const pickImage = async () => {
+      let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+      });
+
+      //console.log(result);
+
+      if (!result.canceled) {
+        setImage(result.assets[0].uri);
+      }
+    };
   return (
     <View>
       <View className="bg-teal-700 h-screen">
@@ -15,15 +32,30 @@ const PersonalInfo = () => {
           <TouchableOpacity>
             <Ionicons name="menu-outline" size={30} color="white" />
           </TouchableOpacity>
-          <View className="items-center">
+          <View className="items-center ">
             <View className="w-32 h-32 rounded-full border-gray-200 border-2 items-center justify-center">
-              <Image
-                source={require("../assets/Image10.jpg")}
-                className="w-32 h-32 rounded-full"
-              />
+              {image ? (
+                <Image
+                  source={{ uri:image }}
+                  className="w-32 h-32 rounded-full"
+                />
+              ) : (
+                <Image
+                  source={require("../assets/Image10.jpg")}
+                  className="w-32 h-32 rounded-full"
+                />
+              )}
             </View>
-            <Text className="text-white font-bold text-xl">Esther</Text>
-            <Text className="text-xs text-white">esther@gmail.com</Text>
+            <View className="relative">
+              <Text className="text-white font-bold text-xl">Esther</Text>
+              <Text className="text-xs text-white">esther@gmail.com</Text>
+            </View>
+            <TouchableOpacity
+              className="absolute top-24 right-32 bg-teal-500 p-2 rounded-full"
+              onPress={pickImage}
+            >
+              <Entypo name="camera" size={20} color="black" className="" />
+            </TouchableOpacity>
           </View>
         </View>
         <View className="bg-white shadow p-2 w-full absolute bottom-12 rounded-t-3xl border-gray-300">
