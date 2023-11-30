@@ -2,12 +2,14 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { AntDesign } from "@expo/vector-icons";
 import {  useState } from "react";
 import { Favourites,  MainScreen, Orders, PersonalInfo } from "../screens";
+import { useTheme } from "../context/ThemeProvider";
 
 
 
 const Tab = createBottomTabNavigator();
 
 const TabBottom = () => {
+  const {dark} = useTheme()
   const [notification, setNotification] = useState();
   return (
     <Tab.Navigator>
@@ -18,6 +20,9 @@ const TabBottom = () => {
             <AntDesign name="home" style={{ fontSize: 30, opacity: 0.3 }} />
           ),
           tabBarActiveTintColor: "#0f766e",
+          style: {
+            backgroundColor: dark?"black":"white", 
+          },
         }}
         name="Home"
         component={MainScreen}

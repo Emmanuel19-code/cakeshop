@@ -2,7 +2,6 @@ import { Text, View, TouchableOpacity, Image, FlatList,ScrollView } from "react-
 import React, { useEffect, useState } from "react";
 import { AntDesign } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
-import {Checkbox} from "expo-checkbox"
 import HeaderThree from "../components/HeaderThree";
 import Sizeselect from "../components/Sizeselect";
 import { useNavigation } from "@react-navigation/native";

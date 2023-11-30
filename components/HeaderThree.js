@@ -6,11 +6,13 @@ import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { useTheme } from "../context/ThemeProvider";
 
 const HeaderThree = ({iconname}) => {
     const navigation = useNavigation()
+    const {dark} = useTheme()
   return (
-    <View className="flex-row items-center">
+    <View className={dark?"flex-row items-center text-gray-700":"flex-row items-center"}>
       <TouchableOpacity
         className="flex-1"
         onPress={() => {

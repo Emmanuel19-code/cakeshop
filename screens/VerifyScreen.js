@@ -2,6 +2,7 @@ import { Text, TouchableOpacity, View, TextInput } from "react-native";
 import React, { useState, useEffect,useRef } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
+import { TextstyleOne } from "../constants/TextStyles";
 
 const VerifyScreen = ({email,phonenumber}) => {
   const navigation = useNavigation();
@@ -31,6 +32,7 @@ const VerifyScreen = ({email,phonenumber}) => {
 
   useEffect(() => {
     otpInputRefs[0]?.current?.focus();
+    
   }, []);
 
   const handleInputChange = (text, index) => {
@@ -52,7 +54,7 @@ const VerifyScreen = ({email,phonenumber}) => {
           <AntDesign name="left" size={24} color="black" />
         </TouchableOpacity>
         <Text className="font-bold text-3xl">Verify</Text>
-        <Text className="text-sm text-slate-500 font-bold">
+        <Text className={TextstyleOne}>
           Enter the 4 digit code sent to your number ending ******6783 or email
           *****@gmail.com
         </Text>
@@ -86,7 +88,7 @@ const VerifyScreen = ({email,phonenumber}) => {
       <View className="justify-center items-center mb-2">
         <TouchableOpacity
           className={disable?"w-64 p-2 rounded bg-gray-400":"w-64 p-2 rounded bg-teal-500"}
-          onPress={() => navigation.navigate("mainpage")}
+          onPress={() => navigation.push("mainpage")}
           disabled={disable}
         >
           <Text className="text-white text-xl text-center">Next</Text>

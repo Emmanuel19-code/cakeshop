@@ -4,11 +4,14 @@ import { AntDesign } from "@expo/vector-icons";
 import Checkbox from "expo-checkbox";
 import InputFieldLogin from "../components/InputFieldLogin";
 import AccountOptions from "../components/AccountOptions";
+import { TextstyleOne, TextstyleTwo } from "../constants/TextStyles";
+import { useTheme } from "../context/ThemeProvider";
 
 const Welcome = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [ischecked,setIschecked] = useState(false)
+  const { dark, colors, setScheme } = useTheme();
   return (
     <View className="p-2">
       <View className="mt-10 ">
@@ -16,7 +19,7 @@ const Welcome = () => {
           <AntDesign name="left" size={24} color="black" />
         </TouchableOpacity>
         <Text className="font-bold text-2xl">Welcome</Text>
-        <Text className="text-sm text-slate-500 font-bold">
+        <Text className={dark?TextstyleTwo:TextstyleOne}>
           Sign in to continue
         </Text>
       </View>

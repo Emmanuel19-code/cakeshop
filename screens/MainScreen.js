@@ -6,10 +6,13 @@ import { Ionicons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import Cakeshowcase from '../components/Cakeshowcase';
 import SearchField from '../components/SearchField';
+import SkeletonItemOne from '../components/SkeletonItemOne';
+import { useTheme } from '../context/ThemeProvider';
 
 const MainScreen = () => {
+  const {dark} = useTheme()
   return (
-    <ScrollView className="p-2">
+    <ScrollView className={dark?"bg-gray-700 p-2":"p-2"}>
       <View className="flex-row items-center justify-between">
         <View className="flex-row items-center">
           <TouchableOpacity>

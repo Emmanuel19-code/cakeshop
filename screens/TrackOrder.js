@@ -95,32 +95,3 @@ const TrackOrder = () => {
 };
 
 export default TrackOrder;
-{
-  /*
-    <MapView
-       ref={mapref}
-        style={StyleSheet.absoluteFill}
-        initialRegion={{
-          latitude: 5.687,
-          longitude: -0.1904,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
-        }}
-      >
-        <Marker 
-        coordinate={pickupcoords}
-        />
-        <Marker 
-        coordinate={dropcoords}
-        />
-        <MapViewDirections
-          origin={pickupcoords}
-          destination={dropcoords}
-          apikey={""}
-          strokeWidth={3}
-          strokeColor="blue"
-        />
-      </MapView>
-  
-  */
-}
