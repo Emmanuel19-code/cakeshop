@@ -1,8 +1,5 @@
-import { StatusBar, Text, TouchableOpacity, View,ScrollView,FlatList} from 'react-native'
+import {  View,ScrollView,FlatList} from 'react-native'
 import React from 'react'
-import PendingOrders from '../components/PendingOrders'
-import { Ionicons } from "@expo/vector-icons";
-import { Feather } from "@expo/vector-icons";
 import CompletedOrders from '../components/CompletedOrders';
 import HeaderTwo from '../components/HeaderTwo';
 import { useTheme } from '../context/ThemeProvider';

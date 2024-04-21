@@ -1,7 +1,6 @@
 import {  Text, View ,TouchableOpacity} from 'react-native'
 import React from 'react'
-import { Ionicons } from "@expo/vector-icons";
-import {Feather} from "@expo/vector-icons"
+import { Ionicons,Feather } from "@expo/vector-icons";
 import { useTheme } from '../context/ThemeProvider';
 
 const HeaderTwo = ({name}) => {

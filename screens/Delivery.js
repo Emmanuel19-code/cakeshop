@@ -1,4 +1,4 @@
-import { Text, ScrollView, View, TouchableOpacity } from "react-native";
+import { Text, ScrollView, View } from "react-native";
 import React, { useState } from "react";
 import DeliveryDate from "../components/DeliveryDate";
 import DeliveryDateSelect from "../components/DeliveryDateSelect";
@@ -108,6 +108,7 @@ const Delivery = (deliverylocation) => {
           {deliverydates.map((items, key) => {
             return (
               <DeliveryDate
+               key={key}
                 day={items.day}
                 daydate={items.daydate}
                 id={items.id}
@@ -122,6 +123,7 @@ const Delivery = (deliverylocation) => {
         {time.map((items, key) => {
           return (
             <DeliveryDateSelect
+              key={key}
               fromtime={items.fromtime}
               toTime={items.toTime}
               pricing={items.pricing}

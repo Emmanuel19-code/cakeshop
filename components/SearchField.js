@@ -1,5 +1,5 @@
 import { Pressable, TextInput, TouchableOpacity, View } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { EvilIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { useTheme } from "../context/ThemeProvider";

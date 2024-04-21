@@ -1,13 +1,9 @@
-import { Text, View,TouchableOpacity, Image, Switch ,Pressable,useWindowDimensions, Animated,StyleSheet, useColorScheme} from 'react-native'
-import React,{useContext, useEffect, useMemo, useRef, useState} from 'react'
-import { Ionicons } from "@expo/vector-icons";
-import { EvilIcons } from "@expo/vector-icons";
-import { MaterialIcons } from "@expo/vector-icons";
+import { Text, View,TouchableOpacity, Image ,Pressable,StyleSheet} from 'react-native'
+import React,{ useState} from 'react'
+import { Ionicons,EvilIcons,MaterialIcons,Entypo,MaterialCommunityIcons } from "@expo/vector-icons";
 import PersonalsubContainer from '../components/PersonalsubContainer';
-import { Entypo } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker"
-import { ThemeContext, useTheme } from '../context/ThemeProvider';
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import {  useTheme } from '../context/ThemeProvider';
 import {  TextstyleThree } from '../constants/TextStyles';
 
 
@@ -16,15 +12,12 @@ import {  TextstyleThree } from '../constants/TextStyles';
 const PersonalInfo = () => {
     const [image, setImage] = useState(null);
     const [ishow,setIshow] = useState(false)
- 
-
-    
     const options = {
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
       aspect: [4, 3],
       quality: 1,
-    };
+    }
 
     const pickImage = async () => {
       let result = await ImagePicker.launchImageLibraryAsync(options);
@@ -50,7 +43,6 @@ const PersonalInfo = () => {
         const toggletheme = ()=>{
            dark?setScheme("white"):setScheme("dark")
         }
-        console.log(dark);
   return (
     <View className="flex-1">
       <View className={dark?"bg-gray-700 h-screen":"bg-teal-700 h-screen"}>

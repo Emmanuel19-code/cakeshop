@@ -26,10 +26,14 @@ const Welcome = () => {
       <View className="mt-20">
         <InputFieldLogin
           inputname={"Email Address"}
+          value={email}
+          setValue={setEmail}
           placeholderText={"Enter your email"}
         />
         <InputFieldLogin
           inputname={"Password"}
+          value={password}
+          setValue={setPassword}
           placeholderText={"Enter Password"}
         />
         <View className="flex-row items-center m-2">

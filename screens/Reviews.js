@@ -1,10 +1,5 @@
 import {
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
   View,
-  Image,
   FlatList,
 } from "react-native";
 import React, { useState } from "react";

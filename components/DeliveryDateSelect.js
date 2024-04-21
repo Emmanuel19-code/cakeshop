@@ -1,5 +1,5 @@
 import { Text, TouchableOpacity, View } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 
 const DeliveryDateSelect = ({
   id,

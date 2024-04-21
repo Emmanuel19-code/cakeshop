@@ -2,11 +2,9 @@ import { ScrollView, Text,  View, TouchableOpacity } from 'react-native'
 import React from 'react'
 import MainScreenScrollview from '../components/MainScreenScrollview';
 import Banner from '../components/Banner';
-import { Ionicons } from "@expo/vector-icons";
-import { Feather } from "@expo/vector-icons";
+import { Ionicons,Feather } from "@expo/vector-icons";
 import Cakeshowcase from '../components/Cakeshowcase';
 import SearchField from '../components/SearchField';
-import SkeletonItemOne from '../components/SkeletonItemOne';
 import { useTheme } from '../context/ThemeProvider';
 
 const MainScreen = () => {

@@ -7,9 +7,8 @@ import {
   Image,
 } from "react-native";
 import React, { useState } from "react";
-import HeaderOne from "../components/HeaderOne";
-import { Entypo } from "@expo/vector-icons";
-import { Feather } from "@expo/vector-icons";
+import { Entypo,Feather} from "@expo/vector-icons";
+
 
 const UserReview = () => {
   return (

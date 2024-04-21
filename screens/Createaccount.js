@@ -25,18 +25,26 @@ const Createaccount = () => {
       <View className="mt-5">
         <InputFieldLogin
           inputname={"Full Name"}
+          value={fullname}
+          setValue={setFullname}
           placeholderText={"Please enter your full name"}
         />
         <InputFieldLogin
           inputname={"Email Address"}
+          value={email}
+          setValue={setEmail}
           placeholderText={"Please enter your email Address"}
         />
         <InputFieldLogin
           inputname={"Phone Number"}
+          value={phone}
+          setValue={setPhone}
           placeholderText={"Please enter your phone number"}
         />
         <InputFieldLogin
           inputname={"Password"}
+          value={password}
+          setValue={setPassword}
           placeholderText={"Please enter your password"}
         />
       </View>

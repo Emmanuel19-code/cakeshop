@@ -5,8 +5,8 @@ import {
   View
 } from "react-native";
 import React, { useState } from "react";
-import { Entypo } from "@expo/vector-icons";
-import { Feather } from "@expo/vector-icons";
+import { Entypo,Feather } from "@expo/vector-icons";
+
 
 const ReviewOptions = () => {
     const [selected,setSelected] = useState("All")
@@ -105,15 +105,15 @@ const ReviewOptions = () => {
       </TouchableOpacity>
       <TouchableOpacity
         className={
-          selected === "4"
+          selected === "2"
             ? "flex-row items-center m-2 py-1 px-2  bg-blue-300 rounded"
             : "flex-row items-center m-2 py-1 px-2 border border-gray-500 rounded"
         }
-        onPress={() => setSelected("4")}
+        onPress={() => setSelected("3")}
       >
         <View className="flex-row items-center justify-center w-auto h-12">
-          {selected === "4" && <Feather name="check" size={20} color="black" />}
-          <Text className="text-black text-lg">4</Text>
+          {selected === "2" && <Feather name="check" size={20} color="black" />}
+          <Text className="text-black text-lg">2</Text>
           <Entypo name="star" size={10} color="black" />
         </View>
       </TouchableOpacity>

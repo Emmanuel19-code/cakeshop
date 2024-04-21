@@ -17,6 +17,7 @@ import {
   Product,
   Reviews,
   Search,
+  SelectModepayment,
   TrackOrder,
   VerifyScreen,
   Welcome,
@@ -135,6 +136,11 @@ const StackNavigation = () => {
         name="processorder"
         options={{ headerShown: false }}
         component={ProcessOrder}
+      />
+      <Stack.Screen
+      name="modepayment"
+      options={{ headerShown:false }}
+      component={SelectModepayment}
       />
     </Stack.Navigator>
   );

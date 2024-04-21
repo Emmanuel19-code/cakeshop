@@ -1,14 +1,15 @@
 import { View, Text,TextInput } from 'react-native'
 import React from 'react'
 
-const InputFieldLogin = ({inputname,placeholderText}) => {
+const InputFieldLogin = ({inputname,placeholderText,value,setValue}) => {
   return (
     <View className="m-2">
-      <Text>{inputname}</Text>
+      <Text className="font-bold">{inputname}</Text>
       <View className="w-full p-2 border-2 border-gray-400 rounded">
         <TextInput
           placeholder={placeholderText}
-          onChangeText={(text) => setEmail(text)}
+          value={value}
+          onChangeText={(text) => setValue(text)}
         />
       </View>
     </View>
